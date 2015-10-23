@@ -1,5 +1,7 @@
 package com.epam.spring.core.model;
 
+import java.util.Date;
+
 public class User {
 
 	private int id;
@@ -7,14 +9,17 @@ public class User {
 	private String name;
 	
 	private String email;
+	
+	private Date birthday;
 
 	public User() {
 	}
 	
-	public User(int id, String name, String email) {
+	public User(int id, String name, String email, Date birthday) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
+		this.birthday = birthday;
 	}
 
 	public int getId() {
@@ -44,6 +49,14 @@ public class User {
 	@Override
 	public String toString() {
 		return "User {id=" + id + ", name=" + name + ", email=" + email + "}";
+	}
+	
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
 	}
 
 	@Override

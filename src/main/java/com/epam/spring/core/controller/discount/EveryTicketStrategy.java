@@ -6,6 +6,8 @@ import com.epam.spring.core.model.User;
 
 public class EveryTicketStrategy implements DiscountStrategy {
 
+	private int percent;
+	
 	public int getDiscount(User user, Event event) {
 		// TODO Auto-generated method stub
 		return 0;
