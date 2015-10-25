@@ -32,12 +32,13 @@ public class EventService {
 			if (auditorium.equals(pair.getValue())) {
 				Date startDate = pair.getKey().getStartDate();
 				Date endDate = pair.getKey().getEndDate();
-				if (!(startDate.after(event.getEndDate()) && endDate.before(event.getStartDate()))) {
+				if (!(startDate.after(event.getEndDate()) || endDate.before(event.getStartDate()))) {
 					return false;
 				}
 			}
 		}
 		return true;
 	}
+	
 
 }

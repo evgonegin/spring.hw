@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.epam.spring.core.MockDB;
 import com.epam.spring.core.dao.UserDAO;
 import com.epam.spring.core.model.User;
 

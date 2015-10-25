@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
+import com.epam.spring.core.dao.EventDAO;
 import com.epam.spring.core.dao.OrderDAO;
 import com.epam.spring.core.dto.Order;
 import com.epam.spring.core.model.Auditorium;
@@ -21,9 +22,13 @@ public class BookingService {
 	@Autowired
 	@Qualifier("OrderDAOMock")
 	OrderDAO orderDAO;
+	
+	@Autowired
+	@Qualifier("EventDAOMock")
+	EventDAO eventDAO;
 		
 	public int getTicketPrice(Event event, int seat, User user){
-		Auditorium auditorium = event.getAuditorium();
+		Auditorium auditorium = eventDAO.getSchedule().get(event);
 		int price = event.getPrice();
 		if (auditorium.getVipSeats().contains(new Integer(seat))){
 			price = price+price*(vipPersent/100);

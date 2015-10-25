@@ -32,6 +32,8 @@
     
     <bean id="UserService" class="com.epam.spring.core.controller.services.UserService"/>
     
+     <bean id="EventService" class="com.epam.spring.core.controller.services.EventService"/>
+    
      <bean id="BookingService" class="com.epam.spring.core.controller.services.BookingService"
      p:discountService-ref = "DiscountService"
      p:vipPersent="${BasePrice.vipPersent}"

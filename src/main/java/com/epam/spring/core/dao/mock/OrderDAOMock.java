@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.epam.spring.core.MockDB;
 import com.epam.spring.core.dao.OrderDAO;
 import com.epam.spring.core.dto.Order;
 import com.epam.spring.core.model.Event;

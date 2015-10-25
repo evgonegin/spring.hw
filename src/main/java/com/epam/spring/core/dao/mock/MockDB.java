@@ -1,9 +1,11 @@
-package com.epam.spring.core;
+package com.epam.spring.core.dao.mock;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Repository;
 
@@ -29,6 +31,7 @@ public class MockDB {
 	
 	private Set<Auditorium> auditoriums;
 	
+	@PostConstruct
     public void init(){
 		this.booking = new HashSet<Order>();
 		this.shcedule = new HashMap<Event, Auditorium>(); 

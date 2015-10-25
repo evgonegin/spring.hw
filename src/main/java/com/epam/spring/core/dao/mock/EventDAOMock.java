@@ -9,7 +9,6 @@ import java.util.Map.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.epam.spring.core.MockDB;
 import com.epam.spring.core.dao.EventDAO;
 import com.epam.spring.core.model.Auditorium;
 import com.epam.spring.core.model.Event;

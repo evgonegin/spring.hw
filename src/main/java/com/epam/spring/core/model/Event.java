@@ -14,7 +14,7 @@ public class Event {
 	
 	private int price;
 	
-	private Auditorium auditorium;
+	//private Auditorium auditorium;
 	
 	private Rating rating;
 
@@ -22,13 +22,12 @@ public class Event {
 
 	}
 
-	public Event(int id, String name, Date startDate, Date endDate, int price, Auditorium auditorium, Rating rating) {
-		this.id = id;
+	public Event(String name, Date startDate, Date endDate, int price, Rating rating) {
 		this.name = name;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.price = price;
-		this.auditorium = auditorium;
+	//	this.auditorium = auditorium;
 		this.rating = rating;
 	}
 
@@ -72,13 +71,13 @@ public class Event {
 		this.price = price;
 	}
 
-	public Auditorium getAuditorium() {
-		return auditorium;
-	}
-
-	public void setAuditorium(Auditorium auditorium) {
-		this.auditorium = auditorium;
-	}
+//	public Auditorium getAuditorium() {
+//		return auditorium;
+//	}
+//
+//	public void setAuditorium(Auditorium auditorium) {
+//		this.auditorium = auditorium;
+//	}
 
 	public Rating getRating() {
 		return rating;
@@ -91,14 +90,16 @@ public class Event {
 	@Override
 	public String toString() {
 		return "Event [id=" + id + ", name=" + name + ", startDate=" + startDate + ", endDate=" + endDate + ", price="
-				+ price + ", auditorium=" + auditorium + ", rating=" + rating + "]";
+				+ price
+				//+ ", auditorium=" + auditorium
+				+ ", rating=" + rating + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((auditorium == null) ? 0 : auditorium.hashCode());
+//		result = prime * result + ((auditorium == null) ? 0 : auditorium.hashCode());
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + price;
@@ -116,11 +117,11 @@ public class Event {
 		if (getClass() != obj.getClass())
 			return false;
 		Event other = (Event) obj;
-		if (auditorium == null) {
-			if (other.auditorium != null)
-				return false;
-		} else if (!auditorium.equals(other.auditorium))
-			return false;
+//		if (auditorium == null) {
+//			if (other.auditorium != null)
+//				return false;
+//		} else if (!auditorium.equals(other.auditorium))
+//			return false;
 		if (endDate == null) {
 			if (other.endDate != null)
 				return false;
