@@ -5,6 +5,8 @@ import com.epam.spring.core.model.User;
 
 public class Order {
 
+	private int id;
+	
 	private User user;
 	
 	private Event event;
@@ -20,6 +22,22 @@ public class Order {
 		this.event = event;
 		this.seat = seat;
 		this.price = price;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getSeat() {
+		return seat;
+	}
+
+	public void setSeat(int seat) {
+		this.seat = seat;
 	}
 
 	public User getUser() {
@@ -38,14 +56,6 @@ public class Order {
 		this.event = event;
 	}
 
-	public int getSeats() {
-		return seat;
-	}
-
-	public void setSeats(int seat) {
-		this.seat = seat;
-	}
-
 	public int getPrice() {
 		return price;
 	}
@@ -56,7 +66,7 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order {user=" + user + ", event=" + event + ", seat=" + seat + ", price=" + price + "}";
+		return "Order [id=" + id + ", user=" + user + ", event=" + event + ", seat=" + seat + ", price=" + price + "]";
 	}
 
 	/**

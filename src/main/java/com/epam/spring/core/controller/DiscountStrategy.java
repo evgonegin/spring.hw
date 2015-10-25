@@ -1,10 +1,12 @@
 package com.epam.spring.core.controller;
 
-import com.epam.spring.core.model.Event;
+import java.util.List;
+
+import com.epam.spring.core.dto.Order;
 import com.epam.spring.core.model.User;
 
 public interface DiscountStrategy {
 
-	int getDiscount(User user, Event event);	
+	int getDiscount(User user, List<Order> list);	
 	
 }

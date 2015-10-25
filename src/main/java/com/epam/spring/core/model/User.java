@@ -15,8 +15,7 @@ public class User {
 	public User() {
 	}
 	
-	public User(int id, String name, String email, Date birthday) {
-		this.id = id;
+	public User(String name, String email, Date birthday) {
 		this.name = name;
 		this.email = email;
 		this.birthday = birthday;
@@ -64,7 +63,6 @@ public class User {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -82,8 +80,6 @@ public class User {
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
-			return false;
-		if (id != other.id)
 			return false;
 		if (name == null) {
 			if (other.name != null)
