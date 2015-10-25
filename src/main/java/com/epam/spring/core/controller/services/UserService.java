@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
 
 import com.epam.spring.core.dao.OrderDAO;
 import com.epam.spring.core.dao.UserDAO;
@@ -13,7 +12,7 @@ import com.epam.spring.core.model.Event;
 import com.epam.spring.core.model.User;
 import com.epam.spring.core.dto.Order;
 
-@Service
+
 public class UserService {
 
 	@Autowired

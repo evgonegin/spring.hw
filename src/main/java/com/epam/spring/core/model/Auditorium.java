@@ -15,8 +15,7 @@ public class Auditorium {
 	public Auditorium() {
 	}
 
-	public Auditorium(int id, String name, int seatsCount, List<Integer> vipSeats) {
-		this.id = id;
+	public Auditorium(String name, int seatsCount, List<Integer> vipSeats) {
 		this.name = name;
 		this.seatsCount = seatsCount;
 		this.vipSeats = vipSeats;
