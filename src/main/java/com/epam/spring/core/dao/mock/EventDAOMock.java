@@ -1,13 +1,17 @@
 package com.epam.spring.core.dao.mock;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.epam.spring.core.MockDB;
 import com.epam.spring.core.dao.EventDAO;
+import com.epam.spring.core.model.Auditorium;
 import com.epam.spring.core.model.Event;
 
 @Component(value = "EventDAOMock")
@@ -16,9 +20,9 @@ public class EventDAOMock implements EventDAO {
 	@Autowired
 	MockDB mockDB;
 	
-	public boolean add(Event event) {
-		if (!mockDB.getShcedule().contains(event)) {
-			mockDB.addEvent(event);
+	public boolean add(Event event, Auditorium auditorium) {
+		if (mockDB.getShcedule().get(event)==null) {
+			mockDB.addEvent(event, auditorium );
 			return true;
 		} else {
 			return false;
@@ -26,13 +30,12 @@ public class EventDAOMock implements EventDAO {
 	}
 
 	public boolean remove(Event event) {
-		for (Event e: mockDB.getShcedule()){
-			if (event.equals(e)){
-				mockDB.removeEvent(e);
-				return true;
-			}
+		if (mockDB.getShcedule().get(event)==null) {
+			mockDB.removeEvent(event);
+			return true;
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	public boolean update(Event event) {
@@ -41,7 +44,10 @@ public class EventDAOMock implements EventDAO {
 	}
 
 	public Event findByID(int id) {
-		for (Event e: mockDB.getShcedule()){
+		Iterator<Entry<Event, Auditorium>> it = mockDB.getShcedule().entrySet().iterator();
+	    while (it.hasNext()) {
+	        Entry<Event, Auditorium> pair = it.next();
+	        Event e = pair.getKey();
 			if (id == e.getId()){
 				return e;
 			}
@@ -50,7 +56,10 @@ public class EventDAOMock implements EventDAO {
 	}
 
 	public Event findByName(String name) {
-		for (Event e: mockDB.getShcedule()){
+		Iterator<Entry<Event, Auditorium>> it = mockDB.getShcedule().entrySet().iterator();
+	    while (it.hasNext()) {
+	        Entry<Event, Auditorium> pair = it.next();
+	        Event e = pair.getKey();
 			if (name.equals(e.getName())){
 				return e;
 			}
@@ -59,7 +68,14 @@ public class EventDAOMock implements EventDAO {
 	}
 
 	public List<Event> getAll() {
-		return new LinkedList<Event>(mockDB.getShcedule());
+		return new LinkedList<Event>(mockDB.getShcedule().keySet());
 	}
 
+	@Override
+	public Map<Event, Auditorium> getSchedule() {
+		return mockDB.getShcedule();
+	}
+
+	
+	
 }

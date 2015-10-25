@@ -1,12 +1,14 @@
 package com.epam.spring.core.dao;
 
 import java.util.List;
+import java.util.Map;
 
+import com.epam.spring.core.model.Auditorium;
 import com.epam.spring.core.model.Event;
 
 public interface EventDAO {
 
-	boolean add(Event event);
+	boolean add(Event event, Auditorium auditorium);
 	
 	boolean remove(Event event);
 	
@@ -17,4 +19,6 @@ public interface EventDAO {
 	Event findByName(String name);
 	
 	List<Event> getAll();
+	
+	Map<Event, Auditorium> getSchedule();
 }

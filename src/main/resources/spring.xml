@@ -17,9 +17,25 @@
     
     <import resource="auditorium.xml"/>
     
-    <bean id="DiscountService" class="com.epam.spring.core.controller.services.DiscountService"/>
+    <bean id="DiscountService" class="com.epam.spring.core.controller.services.DiscountService"
+    p:discountList-ref = "discountList"
+    />
+    
+     <util:list id="discountList" value-type="com.epam.spring.core.controller.DiscountStrategy">
+		 <ref bean="BirthdayStrategy" />
+ 		 <ref bean="EveryTicketStrategy" />
+	</util:list>
+    
+    <bean id="BirthdayStrategy" class="com.epam.spring.core.controller.discount.BirthdayStrategy"/>
+    
+    <bean id="EveryTicketStrategy" class="com.epam.spring.core.controller.discount.EveryTicketStrategy"/>
     
     <bean id="UserService" class="com.epam.spring.core.controller.services.UserService"/>
+    
+     <bean id="BookingService" class="com.epam.spring.core.controller.services.BookingService"
+     p:discountService-ref = "DiscountService"
+     p:vipPersent="${BasePrice.vipPersent}"
+     />
 	
 	<bean id = "AuditoriumService"  class="com.epam.spring.core.controller.services.AuditoriumService"
 	p:auditoriums-ref ="auditoriumsList"
