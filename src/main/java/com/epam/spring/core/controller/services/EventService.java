@@ -2,6 +2,7 @@ package com.epam.spring.core.controller.services;
 
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,8 @@ public class EventService {
 		return true;
 	}
 	
-
+	public List<Event> getAll(){
+		return eventDAO.getAll();
+	}
+	
 }

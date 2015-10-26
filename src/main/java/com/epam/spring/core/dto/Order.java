@@ -19,6 +19,7 @@ public class Order {
 	}
 
 	public Order(User user, Event event, int seat, int price) {
+		this.user = user;
 		this.event = event;
 		this.seat = seat;
 		this.price = price;
@@ -66,7 +67,7 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", user=" + user + ", event=" + event + ", seat=" + seat + ", price=" + price + "]";
+		return "Order [id=" + id + "\n user=" + user + "\n event=" + event + "\n seat=" + seat + "\n price=" + price + "]";
 	}
 
 	/**

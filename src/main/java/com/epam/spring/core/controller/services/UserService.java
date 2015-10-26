@@ -28,6 +28,10 @@ public class UserService {
 	    return (userDAO.add(user)) ? user:null;
 	}
 	
+	public boolean add(User user){
+	    return userDAO.add(user);
+	}
+	
 	public List<Order> getBookedTickets(User user){
 		return orderDAO.getBookedTickets(user);
 	}

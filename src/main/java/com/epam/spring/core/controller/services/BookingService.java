@@ -31,7 +31,7 @@ public class BookingService {
 		Auditorium auditorium = eventDAO.getSchedule().get(event);
 		int price = event.getPrice();
 		if (auditorium.getVipSeats().contains(new Integer(seat))){
-			price = price+price*(vipPersent/100);
+			price = price+price/100*vipPersent;
 		}
 		List<Order> list = new LinkedList<>();
 		list.add(new Order(user,event,seat,price));
@@ -39,6 +39,12 @@ public class BookingService {
 	}
 
 	public boolean bookTicket(Order order){
+		Auditorium auditorium = eventDAO.getSchedule().get(order.getEvent());
+		int price = order.getEvent().getPrice();
+		if (auditorium.getVipSeats().contains(new Integer(order.getSeat()))){
+			price = price+price/100*vipPersent;
+		}
+		order.setPrice(price);
 		List<Order> list = new LinkedList<>();
 		list.add(order);
 		discountService.setDiscount(order.getUser(), list);
@@ -47,6 +53,10 @@ public class BookingService {
 			return true;
 		}		
 		return false;
+	}
+	
+	public List<Order> getAllOrders(){
+		return orderDAO.getAll();
 	}
 	
 	public int getVipPersent() {

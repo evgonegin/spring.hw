@@ -23,12 +23,17 @@ public class EveryTicketStrategy implements DiscountStrategy {
 	OrderDAO orderDAO;
 
 	@Override
+	public String getName() {
+		return "EveryTicketStrategy";
+	}
+
+	@Override
 	public void setDiscount(User user, List<Order> list) {
 		int size = orderDAO.getBookedTickets(user).size();
 		for (Order o : list) {
 			size += 1;
 			if (size % ticketCount == 0)
-				o.setPrice(o.getPrice() - o.getPrice() * (percent / 100));
+				o.setPrice(o.getPrice() - o.getPrice() * percent / 100);
 		}
 	}
 
@@ -42,7 +47,7 @@ public class EveryTicketStrategy implements DiscountStrategy {
 		int sizeAll = size + list.size();
 		int count = sizeAll / ticketCount - size / ticketCount;
 		if (count > 0) {
-			return price * (percent / 100 * count);
+			return price * percent * count / 100;
 		}
 		return 0;
 	}

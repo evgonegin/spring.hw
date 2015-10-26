@@ -40,6 +40,7 @@ public class DiscountService {
 			}
 		}
 		if (bestDS != null) {
+			System.out.println("Discount: "+bestDS.getName()+ " on " + bestDiscount +" is apply!");
 			bestDS.setDiscount(user, list);
 		}
 	}

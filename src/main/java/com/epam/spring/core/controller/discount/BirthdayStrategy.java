@@ -15,6 +15,11 @@ public class BirthdayStrategy implements DiscountStrategy {
 	@Value("${birthDay.percent}")
 	private int percent;
 
+	@Override
+	public String getName() {
+		return "BirthdayStrategy";
+	}
+
 	public void setDiscount(User user, List<Order> list) {
 		Calendar cUser = Calendar.getInstance();
 		Calendar cEvent = Calendar.getInstance();
@@ -23,7 +28,7 @@ public class BirthdayStrategy implements DiscountStrategy {
 			cUser.setTime(o.getUser().getBirthday());
 			if (cEvent.get(Calendar.MONTH) == cUser.get(Calendar.MONTH)
 					&& cEvent.get(Calendar.DAY_OF_MONTH) == cUser.get(Calendar.DAY_OF_MONTH)) {
-				o.setPrice(o.getPrice() - o.getPrice() * (percent / 100));
+				o.setPrice(o.getPrice() - o.getPrice() * percent / 100);
 			}
 		}
 	}
@@ -39,7 +44,7 @@ public class BirthdayStrategy implements DiscountStrategy {
 		}
 		if (cEvent.get(Calendar.MONTH) == cUser.get(Calendar.MONTH)
 				&& cEvent.get(Calendar.DAY_OF_MONTH) == cUser.get(Calendar.DAY_OF_MONTH)) {
-			return price * (percent / 100);
+			return price * percent / 100;
 		}
 		return 0;
 	}
